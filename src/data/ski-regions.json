@@ -1,0 +1,140 @@
+{
+  "park city": {
+    "skiResorts": ["Park City Mountain", "Deer Valley Resort", "Woodward Park City"],
+    "ikon": true,
+    "epic": true,
+    "notes": "Park City Mountain is on Epic; Deer Valley is largely private/on-Ikon partners depending on pass product—verify current pass maps before buying."
+  },
+  "deer valley": {
+    "skiResorts": ["Deer Valley Resort", "Park City Mountain"],
+    "ikon": true,
+    "epic": false,
+    "notes": "Deer Valley skews Ikon/Alterra ecosystem for many skiers; always confirm the exact pass for the season you travel."
+  },
+  "breckenridge": {
+    "skiResorts": ["Breckenridge", "Keystone", "Copper Mountain (nearby)"],
+    "ikon": false,
+    "epic": true,
+    "notes": "Breckenridge and Keystone are Epic; Copper is Ikon—short drive."
+  },
+  "keystone": {
+    "skiResorts": ["Keystone", "Breckenridge", "Arapahoe Basin (nearby)"],
+    "ikon": false,
+    "epic": true,
+    "notes": "Keystone/Breck on Epic; A-Basin is often Epic or independent—check current year."
+  },
+  "vail": {
+    "skiResorts": ["Vail", "Beaver Creek"],
+    "ikon": false,
+    "epic": true,
+    "notes": "Vail Resorts Epic territory."
+  },
+  "beaver creek": {
+    "skiResorts": ["Beaver Creek", "Vail"],
+    "ikon": false,
+    "epic": true,
+    "notes": "Epic Pass Vail Resorts."
+  },
+  "aspen": {
+    "skiResorts": ["Aspen Snowmass", "Aspen Highlands", "Buttermilk", "Ajax"],
+    "ikon": true,
+    "epic": false,
+    "notes": "Aspen Snowmass is Ikon destination; not Epic."
+  },
+  "snowmass": {
+    "skiResorts": ["Snowmass", "Aspen Mountain"],
+    "ikon": true,
+    "epic": false,
+    "notes": "Ikon destination cluster."
+  },
+  "tahoe": {
+    "skiResorts": ["Palisades Tahoe", "Sierra-at-Tahoe", "Northstar", "Heavenly", "Kirkwood"],
+    "ikon": true,
+    "epic": true,
+    "notes": "Palisades and Sierra-at-Tahoe are Ikon; Northstar/Heavenly/Kirkwood are Epic."
+  },
+  "lake tahoe": {
+    "skiResorts": ["Palisades Tahoe", "Sierra-at-Tahoe", "Northstar California", "Heavenly"],
+    "ikon": true,
+    "epic": true,
+    "notes": "Palisades and Sierra-at-Tahoe are Ikon; Northstar California and Heavenly are Epic."
+  },
+  "mammoth": {
+    "skiResorts": ["Mammoth Mountain"],
+    "ikon": true,
+    "epic": false,
+    "notes": "Mammoth is Ikon; not Epic."
+  },
+  "jackson": {
+    "skiResorts": ["Jackson Hole Mountain Resort"],
+    "ikon": true,
+    "epic": false,
+    "notes": "Jackson Hole is on Ikon (with restrictions); not Epic."
+  },
+  "telluride": {
+    "skiResorts": ["Telluride Ski Resort"],
+    "ikon": true,
+    "epic": false,
+    "notes": "Telluride partners with Ikon; verify blackout/restricted days."
+  },
+  "big sky": {
+    "skiResorts": ["Big Sky Resort"],
+    "ikon": true,
+    "epic": false,
+    "notes": "Big Sky is Ikon; not Epic."
+  },
+  "whistler": {
+    "skiResorts": ["Whistler Blackcomb"],
+    "ikon": false,
+    "epic": true,
+    "notes": "Whistler Blackcomb is Epic (Vail Resorts)."
+  },
+  "stowe": {
+    "skiResorts": ["Stowe Mountain Resort"],
+    "ikon": false,
+    "epic": true,
+    "notes": "Stowe is Epic."
+  },
+  "vermont": {
+    "skiResorts": ["Stowe", "Okemo", "Mount Snow", "Killington (Ikon-heavy)"],
+    "ikon": true,
+    "epic": true,
+    "notes": "VT has both ecosystems; match the specific resort."
+  },
+  "utah": {
+    "skiResorts": ["Alta", "Snowbird", "Brighton", "Solitude", "Deer Valley", "Park City"],
+    "ikon": true,
+    "epic": true,
+    "notes": "Utah is mixed: Alta/Snowbird often Ikon; Park City area Epic+Ikon—choose mountain first."
+  },
+  "hawaii": {
+    "skiResorts": [],
+    "ikon": null,
+    "epic": null,
+    "notes": "No downhill skiing; winter here is surf/hike weather."
+  },
+  "orlando": {
+    "skiResorts": [],
+    "ikon": null,
+    "epic": null,
+    "notes": "Flat terrain—no ski resorts nearby."
+  },
+  "myrtle": {
+    "skiResorts": [],
+    "ikon": null,
+    "epic": null,
+    "notes": "Beach/golf destination—not a ski market."
+  },
+  "vegas": {
+    "skiResorts": ["Lee Canyon (local)", "Brian Head (UT, road trip)"],
+    "ikon": false,
+    "epic": false,
+    "notes": "Las Vegas is not a major Epic/Ikon hub; consider Utah or CA road trips for real ski weeks."
+  },
+  "las vegas": {
+    "skiResorts": ["Lee Canyon", "Brian Head (~3h)"],
+    "ikon": false,
+    "epic": false,
+    "notes": "Small local hill or longer drives to UT/CO for pass value."
+  }
+}
