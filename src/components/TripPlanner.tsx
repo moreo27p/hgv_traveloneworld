@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { HgvResort, PlanResponse, Season } from "@/lib/types";
 
@@ -174,9 +175,20 @@ export function TripPlanner() {
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-10 px-4 py-10">
-      <header className="space-y-2">
-        <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">HGV + oneworld staff travel helper</p>
-        <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">Trip planner</h1>
+      <header className="flex items-center gap-4">
+        <Image
+          src="/traveloneworld-logo.svg"
+          alt="HGV Travel Oneworld"
+          width={64}
+          height={64}
+          className="h-16 w-16 rounded-2xl shadow-sm"
+        />
+        <div>
+          <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">HGV + oneworld staff travel helper</p>
+          <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+            HGV Travel Oneworld
+          </h1>
+        </div>
       </header>
 
       <form onSubmit={onBuildPlan} className="space-y-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">

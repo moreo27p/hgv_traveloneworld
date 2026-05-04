@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HGV Trip Planner",
-  description: "Plan HGV stays with weather, flights, attractions, and winter pass hints.",
+  title: "HGV Travel Oneworld",
+  description: "Plan HGV stays from YYZ with weather, airports, attractions, and ski pass hints.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
