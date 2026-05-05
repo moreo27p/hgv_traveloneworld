@@ -41,6 +41,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
   YYZ: [
     { to: "CLT", carriers: ["AA"] },
     { to: "CMN", carriers: ["AT"] },
+    { to: "DCA", carriers: ["AA"] },
     { to: "DFW", carriers: ["AA"] },
     { to: "HKG", carriers: ["CX"] },
     { to: "JFK", carriers: ["AA"] },
@@ -60,6 +61,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
     { to: "HND", carriers: ["JL"] },
   ],
   CLT: [
+    { to: "DCA", carriers: ["AA"] },
     { to: "DFW", carriers: ["AA"] },
     { to: "LAX", carriers: ["AA"] },
     { to: "MIA", carriers: ["AA"] },
@@ -71,6 +73,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
   DFW: [
     { to: "ASE", carriers: ["AA"] },
     { to: "CLT", carriers: ["AA"] },
+    { to: "DCA", carriers: ["AA"] },
     { to: "DEN", carriers: ["AA"] },
     { to: "JAC", carriers: ["AA"] },
     { to: "LAX", carriers: ["AA"] },
@@ -89,6 +92,17 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
     { to: "CDG", carriers: ["AT"] },
     { to: "FCO", carriers: ["AT"] },
     { to: "NCE", carriers: ["AT"] },
+  ],
+  DCA: [
+    { to: "CLT", carriers: ["AA"] },
+    { to: "DFW", carriers: ["AA"] },
+    { to: "JFK", carriers: ["AA"] },
+    { to: "LAX", carriers: ["AA"] },
+    { to: "MIA", carriers: ["AA"] },
+    { to: "ORD", carriers: ["AA"] },
+    { to: "PHL", carriers: ["AA"] },
+    { to: "PHX", carriers: ["AA"] },
+    { to: "YYZ", carriers: ["AA"] },
   ],
   DOH: [
     { to: "CDG", carriers: ["QR"] },
@@ -121,6 +135,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
   ],
   JFK: [
     { to: "CLT", carriers: ["AA"] },
+    { to: "DCA", carriers: ["AA"] },
     { to: "DFW", carriers: ["AA"] },
     { to: "LAX", carriers: ["AA"] },
     { to: "MIA", carriers: ["AA"] },
@@ -134,6 +149,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
     { to: "MAD", carriers: ["IB", "AA"] },
   ],
   LAX: [
+    { to: "DCA", carriers: ["AA"] },
     { to: "DFW", carriers: ["AA"] },
     { to: "HND", carriers: ["JL"] },
     { to: "HNL", carriers: ["AS"] },
@@ -177,6 +193,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
   ],
   MIA: [
     { to: "CLT", carriers: ["AA"] },
+    { to: "DCA", carriers: ["AA"] },
     { to: "DFW", carriers: ["AA"] },
     { to: "JFK", carriers: ["AA"] },
     { to: "LAX", carriers: ["AA"] },
@@ -186,6 +203,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
   ],
   ORD: [
     { to: "CLT", carriers: ["AA"] },
+    { to: "DCA", carriers: ["AA"] },
     { to: "DFW", carriers: ["AA"] },
     { to: "JFK", carriers: ["AA"] },
     { to: "LAX", carriers: ["AA"] },
@@ -203,6 +221,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
   ],
   PHL: [
     { to: "CLT", carriers: ["AA"] },
+    { to: "DCA", carriers: ["AA"] },
     { to: "DFW", carriers: ["AA"] },
     { to: "JFK", carriers: ["AA"] },
     { to: "MIA", carriers: ["AA"] },
@@ -211,6 +230,7 @@ const ONEWORLD_ROUTE_GRAPH: Record<string, OneworldGraphEdge[]> = {
   ],
   PHX: [
     { to: "CLT", carriers: ["AA"] },
+    { to: "DCA", carriers: ["AA"] },
     { to: "DFW", carriers: ["AA"] },
     { to: "JFK", carriers: ["AA"] },
     { to: "LAX", carriers: ["AA", "AS"] },
@@ -274,6 +294,7 @@ const DESTINATION_CLUSTERS: Record<string, DestinationCluster> = {
   ASE: "west-coast-ski",
   BZN: "west-coast-ski",
   CDC: "west-coast-ski",
+  DCA: "us-sunbelt",
   EDI: "europe-leisure",
   FAO: "europe-leisure",
   FCO: "europe-leisure",
