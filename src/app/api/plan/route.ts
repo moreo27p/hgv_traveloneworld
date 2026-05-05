@@ -55,8 +55,8 @@ export async function POST(req: Request) {
   if (!validDate(startDate) || !validDate(endDate)) {
     return NextResponse.json({ ok: false, error: "Use valid YYYY-MM-DD dates." }, { status: 400 });
   }
-  if (new Date(`${endDate}T12:00:00Z`) <= new Date(`${startDate}T12:00:00Z`)) {
-    return NextResponse.json({ ok: false, error: "End date must be after start date." }, { status: 400 });
+  if (new Date(`${endDate}T12:00:00Z`) < new Date(`${startDate}T12:00:00Z`)) {
+    return NextResponse.json({ ok: false, error: "End date cannot be before start date." }, { status: 400 });
   }
   if (season !== "summer" && season !== "winter") {
     return NextResponse.json({ ok: false, error: "season must be summer or winter." }, { status: 400 });

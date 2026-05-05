@@ -16,8 +16,16 @@ function formatTemp(c: number): string {
   return `${Math.round(c)}°C`;
 }
 
-function formatShortDate(date: string): string {
-  return new Intl.DateTimeFormat("en-CA", { month: "short", day: "numeric" }).format(new Date(`${date}T12:00:00Z`));
+function formatDateRange(start: string, end: string): string {
+  const formatter = new Intl.DateTimeFormat("en-CA", { month: "short", day: "numeric" });
+  const startDate = new Date(`${start}T12:00:00Z`);
+  const endDate = new Date(`${end}T12:00:00Z`);
+  const sameYear = startDate.getUTCFullYear() === endDate.getUTCFullYear();
+  const startLabel = sameYear
+    ? formatter.format(startDate)
+    : new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "short", day: "numeric" }).format(startDate);
+  const endLabel = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "short", day: "numeric" }).format(endDate);
+  return `${startLabel} - ${endLabel}`;
 }
 
 function weatherTone(precipMm: number): string {
@@ -141,6 +149,15 @@ export function TripPlanner() {
       }),
     [resorts, scopeFilter, locationFilter, categoryFilter]
   );
+  const weatherSummary = useMemo(() => {
+    if (!plan || (plan.weather.daily ?? []).length === 0) return null;
+    const temps = plan.weather.daily;
+    return {
+      tempMinC: Math.min(...temps.map((day) => day.tempMinC)),
+      tempMaxC: Math.max(...temps.map((day) => day.tempMaxC)),
+      precipMm: temps.reduce((sum, day) => sum + day.precipMm, 0),
+    };
+  }, [plan]);
 
   async function onBuildPlan(e: React.FormEvent) {
     e.preventDefault();
@@ -311,7 +328,13 @@ export function TripPlanner() {
               required
               className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900"
               value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              onChange={(e) => {
+                const nextStartDate = e.target.value;
+                setStartDate(nextStartDate);
+                setEndDate((currentEndDate) =>
+                  currentEndDate && nextStartDate && currentEndDate < nextStartDate ? nextStartDate : currentEndDate
+                );
+              }}
             />
           </div>
           <div className="space-y-2">
@@ -324,6 +347,7 @@ export function TripPlanner() {
               required
               className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900"
               value={endDate}
+              min={startDate || undefined}
               onChange={(e) => setEndDate(e.target.value)}
             />
           </div>
@@ -494,23 +518,29 @@ export function TripPlanner() {
               )}
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {(plan.weather.daily ?? []).map((w) => (
-                <div
-                  key={w.date}
-                  className="rounded-xl border border-zinc-200 bg-white p-4 text-center dark:border-zinc-800 dark:bg-zinc-950"
-                >
+              {weatherSummary && (
+                <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950 sm:col-span-2 lg:col-span-4">
                   <p className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                    {formatShortDate(w.date)}
+                    {formatDateRange(plan.startDate, plan.endDate)}
                   </p>
-                  <p className="mt-3 text-4xl font-semibold text-zinc-900 dark:text-zinc-50">{formatTemp(w.tempMaxC)}</p>
-                  <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Low {formatTemp(w.tempMinC)}</p>
-                  {plan.weather.source !== "typical" && (
-                    <p className="mt-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                      {weatherTone(w.precipMm)} · {w.precipMm.toFixed(1)} mm
-                    </p>
+                  <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                      <p className="text-4xl font-semibold text-zinc-900 dark:text-zinc-50">
+                        {formatTemp(weatherSummary.tempMinC)} - {formatTemp(weatherSummary.tempMaxC)}
+                      </p>
+                      <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Expected temperature range</p>
+                    </div>
+                    {plan.weather.source !== "typical" && (
+                      <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                        {weatherTone(weatherSummary.precipMm)} · {weatherSummary.precipMm.toFixed(1)} mm total precip
+                      </p>
+                    )}
+                  </div>
+                  {plan.weather.message && (
+                    <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">{plan.weather.message}</p>
                   )}
                 </div>
-              ))}
+              )}
             </div>
             {(plan.weather.daily ?? []).length === 0 && (
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
