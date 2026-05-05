@@ -575,9 +575,16 @@ export function TripPlanner() {
                     {HOME_AIRPORT} to {plan.flights.destination?.code ?? "?"}
                   </p>
                 </div>
-                <p className="text-4xl font-semibold text-zinc-900 dark:text-zinc-50">
-                  {plan.flights.oneworld?.total ?? 0}
-                </p>
+                <div className="text-right">
+                  {plan.flights.oneworld?.source === "estimated" && (
+                    <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-medium text-amber-800 dark:bg-amber-950 dark:text-amber-100">
+                      Estimated routing
+                    </span>
+                  )}
+                  <p className="mt-2 text-4xl font-semibold text-zinc-900 dark:text-zinc-50">
+                    {plan.flights.oneworld?.total ?? 0}
+                  </p>
+                </div>
               </div>
               <div className="mt-4 grid grid-cols-3 gap-2">
                 {[

@@ -45,6 +45,7 @@ export type FlightOfferSummary = {
 
 export type OneworldFlightSummary = {
   configured: boolean;
+  source: "live" | "estimated";
   total: number;
   direct: number;
   oneStop: number;
